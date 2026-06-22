@@ -1,3 +1,17 @@
+button {
+    border: none;
+    background-color: #fff;
+    box-shadow: inset 0px 0px 3px #415497;
+    padding: 6px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 10px;
+}
+
+button:active {
+    background-color: #415497
+}
+
 .container {
     border-radius: 10px;
     box-shadow: 0px 0px 5px #415497;
@@ -18,4 +32,29 @@
 
 .container#clock > #date-text {
     padding-bottom: 5px;
+}
+
+.container#shortcut {
+    padding: 7px;
+    margin-top: 20px;
+    width: 30%;
+}
+
+.container#shortcut > ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.container#shortcut > ul > li {
+    margin: 0;
+    padding: 5px;
+    border-bottom: 1px solid #415497;
+}
+
+.container#shortcut > ul > li > a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    width: 100%;
 }

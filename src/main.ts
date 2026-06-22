@@ -30,3 +30,44 @@ const updateTime = () => {
     setTimeout(updateTime, delaySecound * 1000)
 }
 updateTime();
+
+// Link表示
+const updateLinks = () => {
+    const links = JSON.parse(localStorage.getItem('links') || '[]');
+    const ul = document.getElementById("links");
+    ul!.innerHTML = "";
+    for (let i = 0; i < links.length; i++) {
+        if(ul) ul.innerHTML += `<li><a href="${links[i].url}">${links[i].title}</a></li>`
+    }
+}
+
+const addLink = () => {
+    const title = window.prompt("タイトル");
+    const url = title ? window.prompt("URL") : null;
+    if (title && url){
+        const links = JSON.parse(localStorage.getItem('links') || '[]');
+        links.push({
+            title: title,
+            url: url
+        });
+        localStorage.setItem('links', JSON.stringify(links));
+        updateLinks();
+    }
+}
+
+const showRemoveLinkDialog = () => {
+    const num = window.prompt("index");
+    removeLink(Number(num));
+}
+
+const removeLink = (i: number) => {
+    const links = JSON.parse(localStorage.getItem('links') || '[]');
+    links.splice(i, 1);
+    localStorage.setItem("links", JSON.stringify(links));
+    updateLinks()
+}
+
+document.getElementById("addBtn")?.addEventListener("click", addLink);
+document.getElementById("removeBtn")?.addEventListener("click", showRemoveLinkDialog);
+
+updateLinks();
